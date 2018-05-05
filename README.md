@@ -1,2 +1,2 @@
-# VirtualHorizon
-Laboratorio #2 Sistemas Incrustados
+# Scheduler2
+Second version of the scheduler
