@@ -8,8 +8,9 @@
 #ifndef MAILBOX_HPP_
 #define MAILBOX_HPP_
 #include "msp.h"
+#include <vector>
 #define MAX_MESSAGE_QUEUE 50
-
+using std::vector;
 struct st_Message
 {
     bool     bMessageValid;   // - True when message is valid
@@ -23,14 +24,15 @@ struct st_Message
 class Mailbox
 {
 public:
-    static Mailbox* getMailbox();
-    bool sendMessage(st_Message i_stMessage);
-    st_Message getMessage(uint8_t i_u8MailboxID);
+    static Mailbox* getMailbox();                       //Returns a pointer to this Mailbox
+    bool sendMessage(st_Message i_stMessage);           //Returns 1 if error.
+    st_Message getMessage(uint8_t i_u8MailboxID);       //Returns a st_Message , if bMessageValid = 0, Its not a valid message
 
 private:
     Mailbox(){};
     static Mailbox* MailObj;
-    st_Message m_stMessageQueue[MAX_MESSAGE_QUEUE];
+    //st_Message m_stMessageQueue[MAX_MESSAGE_QUEUE];
+    vector<st_Message> m_stMessageQueue;
 };
 
 #endif /* MAILBOX_HPP_ */

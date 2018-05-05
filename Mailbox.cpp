@@ -7,21 +7,15 @@
 
 #include <Mailbox.hpp>
 
-Mailbox* Mailbox::MailObj = nullptr;
+Mailbox* Mailbox::MailObj = new Mailbox();
 
 extern "C"
 {
-    Mailbox* Mailbox::getMailbox()
-    {
-        if(MailObj == nullptr)
-        {
-            MailObj = new Mailbox();
-        }
-
+    Mailbox* Mailbox::getMailbox(){
         return MailObj;
     }
 
-    st_Message Mailbox::getMessage(uint8_t i_u8MailboxID)
+    st_Message Mailbox::getMessage(uint8_t i_u8MailboxID) //TODO
     {
         st_Message l_stMessage;
 
@@ -30,7 +24,7 @@ extern "C"
         return(l_stMessage);
     }
 
-    bool Mailbox::sendMessage(st_Message i_stMessage)
+    bool Mailbox::sendMessage(st_Message i_stMessage) //TODO
     {
         if(m_stMessageQueue[i_stMessage.u8DestinationID].bMessageValid == false)
         {
