@@ -8,6 +8,7 @@ CPP_SRCS += \
 ../Mailbox.cpp \
 ../Scheduler.cpp \
 ../Task.cpp \
+../Timer32.cpp \
 ../main.cpp 
 
 CMD_SRCS += \
@@ -26,6 +27,7 @@ OBJS += \
 ./Mailbox.obj \
 ./Scheduler.obj \
 ./Task.obj \
+./Timer32.obj \
 ./main.obj \
 ./startup_msp432p401r_ccs.obj \
 ./system_msp432p401r.obj 
@@ -35,6 +37,7 @@ CPP_DEPS += \
 ./Mailbox.d \
 ./Scheduler.d \
 ./Task.d \
+./Timer32.d \
 ./main.d 
 
 OBJS__QUOTED += \
@@ -42,6 +45,7 @@ OBJS__QUOTED += \
 "Mailbox.obj" \
 "Scheduler.obj" \
 "Task.obj" \
+"Timer32.obj" \
 "main.obj" \
 "startup_msp432p401r_ccs.obj" \
 "system_msp432p401r.obj" 
@@ -55,6 +59,7 @@ CPP_DEPS__QUOTED += \
 "Mailbox.d" \
 "Scheduler.d" \
 "Task.d" \
+"Timer32.d" \
 "main.d" 
 
 CPP_SRCS__QUOTED += \
@@ -62,6 +67,7 @@ CPP_SRCS__QUOTED += \
 "../Mailbox.cpp" \
 "../Scheduler.cpp" \
 "../Task.cpp" \
+"../Timer32.cpp" \
 "../main.cpp" 
 
 C_SRCS__QUOTED += \

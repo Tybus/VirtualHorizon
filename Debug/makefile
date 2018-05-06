@@ -12,6 +12,7 @@ ORDERED_OBJS += \
 "./Mailbox.obj" \
 "./Scheduler.obj" \
 "./Task.obj" \
+"./Timer32.obj" \
 "./main.obj" \
 "./startup_msp432p401r_ccs.obj" \
 "./system_msp432p401r.obj" \
@@ -158,9 +159,9 @@ VirtualHorizon.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "LED.obj" "Mailbox.obj" "Scheduler.obj" "Task.obj" "main.obj" "startup_msp432p401r_ccs.obj" "system_msp432p401r.obj" 
+	-$(RM) "LED.obj" "Mailbox.obj" "Scheduler.obj" "Task.obj" "Timer32.obj" "main.obj" "startup_msp432p401r_ccs.obj" "system_msp432p401r.obj" 
 	-$(RM) "startup_msp432p401r_ccs.d" "system_msp432p401r.d" 
-	-$(RM) "LED.d" "Mailbox.d" "Scheduler.d" "Task.d" "main.d" 
+	-$(RM) "LED.d" "Mailbox.d" "Scheduler.d" "Task.d" "Timer32.d" "main.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

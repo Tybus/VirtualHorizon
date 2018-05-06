@@ -19,13 +19,14 @@ class Task
 		void                SetTaskPriority(uint8_t i_u8NewPriority){m_u8Priority = i_u8NewPriority;};
 		st_Message          getMessage(uint8_t i_u8TaskID);
 		bool                sendMessage(st_Message i_stMessage);
-
+		float               getTaskTimems(void) {return m_fTaskTimems;};
 	private:
 	   static uint8_t m_u8NextTaskID;
 	   uint8_t m_u8Priority;
 	   Mailbox* m_pMailbox;
 	protected:
 	   bool m_bIsFinished;
+	   float m_fTaskTimems;
 };
 
 #endif /* TASK_HPP_ */
