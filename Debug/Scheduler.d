@@ -83,6 +83,7 @@ Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include
 Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__cprolog.h
 Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__epilog.h
 Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__config_compat_post.h
+Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stdio.h
 
 ../Scheduler.cpp: 
 ../Scheduler.hpp: 
@@ -167,3 +168,4 @@ Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include
 /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__cprolog.h: 
 /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__epilog.h: 
 /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__config_compat_post.h: 
+/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stdio.h: 

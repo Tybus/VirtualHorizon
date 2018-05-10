@@ -84,6 +84,7 @@ main.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__p
 main.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__cprolog.h
 main.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__epilog.h
 main.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__config_compat_post.h
+main.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stdio.h
 main.obj: ../LED.hpp
 main.obj: /home/david/Documents/Universidad/Incrustados/Labo2/VirtualHorizon/Timer32.h
 
@@ -171,5 +172,6 @@ main.obj: /home/david/Documents/Universidad/Incrustados/Labo2/VirtualHorizon/Tim
 /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__cprolog.h: 
 /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__epilog.h: 
 /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__config_compat_post.h: 
+/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stdio.h: 
 ../LED.hpp: 
 /home/david/Documents/Universidad/Incrustados/Labo2/VirtualHorizon/Timer32.h: 

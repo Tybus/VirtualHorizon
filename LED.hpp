@@ -20,6 +20,7 @@ class LED : public Task
         virtual uint8_t run(void);
         virtual uint8_t setup(void);
     protected:
+        float m_fTaskTimems;
     private:
 };
 

@@ -12,16 +12,17 @@ Scheduler g_MainScheduler; // - Instantiate a Scheduler
 // #########################
 //          MAIN
 // #########################
-void main(void)
-{
+void main(void){
+
+
     // - Instantiate two new Tasks
     LED BlueLED(BIT2);
     LED GreenLED(BIT1);
     // - Run the overall setup function for the system
     Setup(g_MainScheduler.getSchedulerTick());//Start with 1ms Tick
     // - Attach the Tasks to the Scheduler;
-    g_MainScheduler.attach(&BlueLED,TaskType_Periodic, TaskActiveTrue,500);
-    g_MainScheduler.attach(&GreenLED, TaskType_Periodic,TaskActiveFalse,600);
+    g_MainScheduler.attach(&BlueLED,TaskType_Periodic, TaskActiveTrue,500000);
+    g_MainScheduler.attach(&GreenLED, TaskType_Periodic,TaskActiveFalse,600000);
     // - Run the Setup for the scheduler and all tasks
     g_MainScheduler.setup();
     // - Main Loop

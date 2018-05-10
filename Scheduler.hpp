@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <list>
 #include <cstddef>
+#include <stdio.h>
 
 #define NUMBER_OF_SLOTS (uint8_t) 255
 #define NULL            0
@@ -30,13 +31,20 @@ enum TaskActive{
 };
 
 // - This structure defines the Task Information
-struct st_TaskInfo {
+class st_TaskInfo {
+public:
 	Task * pTask;                       // - Pointer to the Task
 	TaskType enTaskType;                // - Task type
 	bool bTaskIsActive;                 // - True when the task is available
 	uint64_t u64TickInterval;           // - How often the task is executed
 	uint64_t u64ticks;                  // - Current tick count
 	uint64_t u64TickIntervalInitValue;  // - Value to reset
+    st_TaskInfo(){ pOriginalAddress = this; } // -Saves a pointer to the original task
+    st_TaskInfo * GetOriginalAddress(){return this->pOriginalAddress;}
+
+private:
+    st_TaskInfo * pOriginalAddress; //Saves the origin address;
+
 };
 
 class Scheduler{
@@ -50,6 +58,7 @@ public:
     void setSechedulerTick(float i_fTickms);
     bool TaskIsActive(const st_TaskInfo& i_Task){return i_Task.bTaskIsActive;};
     bool TaskInactive(const st_TaskInfo & i_Task){return !i_Task.bTaskIsActive;};
+    int m_list_size;
 private:
     uint8_t m_u8OpenSlots; // - Available slots
     uint8_t m_u8NextSlot;  // - Next available slot
@@ -59,10 +68,12 @@ private:
     float m_fTickms;
     uint8_t CalculateNextSchedule(void); // - Calculate next schedule tasks (not implemented)
     //bool SortScheduleByPriority(const st_TaskInfo& i_TaskOne, const st_TaskInfo& i_TaskTwo); // - Sorts a schedule based on priority (not implemented)
+    void handleTickCount(void); //Handles the tick count operations
     uint8_t SortScheduleByActive(void); // Sorts the schedule by activity.
     uint8_t SortScheduleByTime(void);
     uintptr_t m_pNextSchedule; // - Pointer to the next schedule.
     Mailbox* m_pMailbox;
+    void HandleTickCount(void);
 
 };
 
