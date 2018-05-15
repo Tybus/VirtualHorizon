@@ -8,7 +8,7 @@
 #ifndef TIMER32_H_
 #define TIMER32_H_
 
-#include "msp.h"
+#include <ti/devices/msp432p4xx/inc/msp.h>
 #include <stdint.h>
 #include <cstddef>
 

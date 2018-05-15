@@ -7,7 +7,7 @@
 
 #ifndef MAILBOX_HPP_
 #define MAILBOX_HPP_
-#include "msp.h"
+#include <ti/devices/msp432p4xx/inc/msp.h>
 #include <vector>
 #define MAX_MESSAGE_QUEUE 50
 using std::vector;

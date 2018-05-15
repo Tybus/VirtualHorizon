@@ -8,12 +8,13 @@
 #ifndef ACCELL_HPP_
 #define ACCELL_HPP_
 #define __NOP __nop
-#include "msp.h"
 #include "Task.hpp"
-#include "driverlib.h"
+#include <ti/devices/msp432p4xx/inc/msp.h>
+#include <ti/devices/msp432p4xx/driverlib/driverlib.h>
+#include <ti/grlib/grlib.h>
+#include "LcdDriver/Crystalfontz128x128_ST7735.h"
+#include <stdio.h>
 #include "Mailbox.hpp"
-#include <>stdio.h>
-
 
 class ACCELL : public Task
 {

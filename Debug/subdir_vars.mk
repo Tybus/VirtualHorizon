@@ -4,6 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../ACCEL.cpp \
 ../LED.cpp \
 ../Mailbox.cpp \
 ../Scheduler.cpp \
@@ -23,6 +24,7 @@ C_DEPS += \
 ./system_msp432p401r.d 
 
 OBJS += \
+./ACCEL.obj \
 ./LED.obj \
 ./Mailbox.obj \
 ./Scheduler.obj \
@@ -33,6 +35,7 @@ OBJS += \
 ./system_msp432p401r.obj 
 
 CPP_DEPS += \
+./ACCEL.d \
 ./LED.d \
 ./Mailbox.d \
 ./Scheduler.d \
@@ -41,6 +44,7 @@ CPP_DEPS += \
 ./main.d 
 
 OBJS__QUOTED += \
+"ACCEL.obj" \
 "LED.obj" \
 "Mailbox.obj" \
 "Scheduler.obj" \
@@ -55,6 +59,7 @@ C_DEPS__QUOTED += \
 "system_msp432p401r.d" 
 
 CPP_DEPS__QUOTED += \
+"ACCEL.d" \
 "LED.d" \
 "Mailbox.d" \
 "Scheduler.d" \
@@ -63,6 +68,7 @@ CPP_DEPS__QUOTED += \
 "main.d" 
 
 CPP_SRCS__QUOTED += \
+"../ACCEL.cpp" \
 "../LED.cpp" \
 "../Mailbox.cpp" \
 "../Scheduler.cpp" \

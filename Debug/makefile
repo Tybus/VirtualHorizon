@@ -8,6 +8,7 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
+"./ACCEL.obj" \
 "./LED.obj" \
 "./Mailbox.obj" \
 "./Scheduler.obj" \
@@ -16,8 +17,17 @@ ORDERED_OBJS += \
 "./main.obj" \
 "./startup_msp432p401r_ccs.obj" \
 "./system_msp432p401r.obj" \
+"./LcdDriver/Crystalfontz128x128_ST7735.obj" \
+"./LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj" \
+"./ccs/startup_msp432p401r_ccs.obj" \
 "../msp432p401r.cmd" \
 $(GEN_CMDS__FLAG) \
+-l"ti/display/lib/display.aem4f" \
+-l"ti/grlib/lib/ccs/m4f/grlib.a" \
+-l"third_party/spiffs/lib/ccs/m4f/spiffs.a" \
+-l"ti/drivers/lib/drivers_msp432p401x.aem4f" \
+-l"third_party/fatfs/lib/ccs/m4f/fatfs.a" \
+-l"ti/devices/msp432p4xx/driverlib/ccs/msp432p4xx_driverlib.lib" \
 -llibc.a \
 
 -include ../makefile.init
@@ -28,7 +38,11 @@ RMDIR := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir_vars.mk
+-include LcdDriver/subdir_vars.mk
+-include ccs/subdir_vars.mk
 -include subdir_rules.mk
+-include LcdDriver/subdir_rules.mk
+-include ccs/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -145,23 +159,23 @@ all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 VirtualHorizon.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: ARM Linker'
-	"/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --advice:power=all --define=__MSP432P401R__ --define=ccs -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"VirtualHorizon.map" --heap_size=1024 --stack_size=512 -i"/home/david/ti/ccsv7/ccs_base/arm/include" -i"/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/lib" -i"/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="VirtualHorizon_linkInfo.xml" --rom_model -o "VirtualHorizon.out" $(ORDERED_OBJS)
+	"/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"VirtualHorizon.map" --stack_size=512 -i"/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/lib" -i"/home/david/ti/simplelink_msp432p4_sdk_2_10_00_14/source" -i"/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="VirtualHorizon_linkInfo.xml" --rom_model -o "VirtualHorizon.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
 VirtualHorizon.hex: $(EXE_OUTPUTS)
 	@echo 'Building files: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo 'Invoking: ARM Hex Utility'
-	"/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/bin/armhex" --memwidth=8 --romwidth=8 -o "VirtualHorizon.hex" $(EXE_OUTPUTS__QUOTED)
+	"/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/bin/armhex"  -o "VirtualHorizon.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "LED.obj" "Mailbox.obj" "Scheduler.obj" "Task.obj" "Timer32.obj" "main.obj" "startup_msp432p401r_ccs.obj" "system_msp432p401r.obj" 
-	-$(RM) "startup_msp432p401r_ccs.d" "system_msp432p401r.d" 
-	-$(RM) "LED.d" "Mailbox.d" "Scheduler.d" "Task.d" "Timer32.d" "main.d" 
+	-$(RM) "ACCEL.obj" "LED.obj" "Mailbox.obj" "Scheduler.obj" "Task.obj" "Timer32.obj" "main.obj" "startup_msp432p401r_ccs.obj" "system_msp432p401r.obj" "LcdDriver/Crystalfontz128x128_ST7735.obj" "LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj" "ccs/startup_msp432p401r_ccs.obj" 
+	-$(RM) "startup_msp432p401r_ccs.d" "system_msp432p401r.d" "LcdDriver/Crystalfontz128x128_ST7735.d" "LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.d" "ccs/startup_msp432p401r_ccs.d" 
+	-$(RM) "ACCEL.d" "LED.d" "Mailbox.d" "Scheduler.d" "Task.d" "Timer32.d" "main.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
