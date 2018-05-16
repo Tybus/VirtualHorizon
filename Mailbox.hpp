@@ -8,9 +8,12 @@
 #ifndef MAILBOX_HPP_
 #define MAILBOX_HPP_
 #include "msp.h"
-#include <vector>
+#include <list>
 #define MAX_MESSAGE_QUEUE 50
-using std::vector;
+#define ACCELL_MB_ID 1
+#define ANGLE_MB_ID 2
+#define ACCELL_ADC_RESULT_CODE 1
+
 struct st_Message
 {
     bool     bMessageValid;   // - True when message is valid
@@ -31,8 +34,7 @@ public:
 private:
     Mailbox(){};
     static Mailbox* MailObj;
-    //st_Message m_stMessageQueue[MAX_MESSAGE_QUEUE];
-    vector<st_Message> m_stMessageQueue;
+    st_Message m_stMessageQueue[MAX_MESSAGE_QUEUE];
 };
 
 #endif /* MAILBOX_HPP_ */
