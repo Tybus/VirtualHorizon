@@ -24,12 +24,13 @@
 
 struct st_Message
 {
-    bool     bMessageValid;   // - True when message is valid
+    bool     bMessageValid = 0;   // - True when message is valid
     uint8_t  u8DestinationID; // - Destination Task ID
     uint8_t  u8SourceID;      // - Source Task ID
     uint8_t  u8MessageCode;   // - Message code, interpreted by Destination
     uint32_t u32MessageData;  // - Message data, interpreted by Destination
-    uint32_t * pPayload;       // - Message Payload, interpreted by Destination
+    //uint32_t * pPayload;       // - Message Payload, interpreted by Destination
+    uint32_t pPayload;
 };
 
 class Mailbox
