@@ -15,6 +15,14 @@ uint8_t POSITION::setup(){
 }
 uint8_t POSITION::run(){
     st_Message l_MrMessage = m_pMailbox->getMessage(POSITION_MB_ID);
+    //El mailbox aun no está funcionando apartir de aqui se reescribe el mensaje.
+    int32_t l_i32Angle = 0;
+    l_MrMessage.bMessageValid = true;
+    l_MrMessage.pPayload = NULL;
+    std::memcpy(&l_MrMessage.u32MessageData, &l_i32Angle, 4);
+    l_MrMessage.u8DestinationID = POSITION_MB_ID;
+    l_MrMessage.u8MessageCode = ANGLE_ELEVATION_ANGLE_RESULT_CODE;
+    l_MrMessage.u8SourceID = ANGLE_MB_ID;
     st_Message l_MoutMessage;
     int32_t l_i32ElevationAngle;
     uint32_t l_u32Elevation = m_u32LastElevation;
@@ -25,6 +33,7 @@ uint8_t POSITION::run(){
             l_u32Elevation = 64 + 0.71*l_i32ElevationAngle;
             m_u32LastElevation = l_u32Elevation;
         }
+        l_MrMessage = m_pMailbox->getMessage(POSITION_MB_ID);
     }
     l_MoutMessage.bMessageValid = true;
     l_MoutMessage.pPayload = NULL;

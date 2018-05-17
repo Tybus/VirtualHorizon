@@ -7,24 +7,21 @@ ACCELL::ACCELL(){
 
 uint8_t ACCELL::run(){
 
-    uint16_t l_u16xyzValues[3];
     st_Message l_MreadValues;
-    ADC14_getMultiSequenceResult(l_u16xyzValues);
-    for(int i = 0; i<3; i++){
-        m_axyzValues[i] = (uint32_t) l_u16xyzValues[i]; //better get this for sure.
-    }
+    m_axyzValues[0] = (int16_t) ADC14_getResult(ADC_MEM0); //better get this for sure.
+    m_axyzValues[1] = (int16_t) ADC14_getResult(ADC_MEM1);
+    m_axyzValues[2] = (int16_t) ADC14_getResult(ADC_MEM2);
     l_MreadValues.bMessageValid = true;
     l_MreadValues.u8DestinationID = ANGLE_MB_ID;
     l_MreadValues.u8SourceID = ACCELL_MB_ID;
     l_MreadValues.u8MessageCode = ACCELL_ADC_RESULT_CODE;
     l_MreadValues.u32MessageData = 3;//6 8 bit values to read.
-    l_MreadValues.pPayload = this->m_axyzValues;
+    l_MreadValues.pPayload = (uint32_t * ) this->m_axyzValues;
 
     m_pMailbox->sendMessage(l_MreadValues);
 
-    printf("X: %d. /n",l_u16xyzValues[0]);
-    printf("Y: %d. /n",l_u16xyzValues[1]);
-    printf("Z: %d. /n",l_u16xyzValues[2]);
+    //l_MreadValues = m_pMailbox->getMessage(ANGLE_MB_ID); mailbox is not working
+
     return NO_ERR;
 
 }
@@ -38,6 +35,8 @@ uint8_t ACCELL::setup(){
      /* Initializing ADC (ADCOSC/64/8) */
      MAP_ADC14_enableModule();
      ADC14_initModule(ADC_CLOCKSOURCE_MCLK, ADC_PREDIVIDER_1, ADC_DIVIDER_1, 0);
+     ADC14_setResultFormat(ADC_SIGNED_BINARY);
+     ADC14_setResolution(ADC_14BIT);
 
      /* Configuring ADC Memory (ADC_MEM0 - ADC_MEM2 (A11, A13, A14)  with no repeat)
           * with internal 2.5v reference */

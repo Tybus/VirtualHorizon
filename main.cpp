@@ -5,6 +5,8 @@
 #include "LED.hpp"
 #include <Timer32.h>
 #include "ACCELL.hpp"
+#include "ANGLE.h"
+#include "POSITION.h"
 //#include "ACCELL.hpp"
 
 
@@ -19,16 +21,28 @@ void main(void){
 
 
     // - Instantiate two new Tasks
+    ACCELL Accelerometer = ACCELL();
+    ANGLE Angle = ANGLE();
+    POSITION Position = POSITION();
     LED BlueLED(BIT2);
     LED GreenLED(BIT1);
-    ACCELL Accelerometer = ACCELL();
+    //ACCELL Accelerometer = ACCELL();
     // - Run the overall setup function for the system
     Setup(g_MainScheduler.getSchedulerTick());//Start with 1ms Tick
     // - Attach the Tasks to the Scheduler;
+    Angle.setup();
+    Accelerometer.setup();
+    Position.setup();
+    while(1){
+        //Angle.run();
+        //Accelerometer.run();
+        Position.run();
+    }
     //g_MainScheduler.attach(&BlueLED,TaskType_Periodic, TaskActiveTrue,500);
     g_MainScheduler.attach(&GreenLED, TaskType_Periodic,TaskActiveTrue, 600);
     g_MainScheduler.attach(&Accelerometer, TaskType_Always, TaskActiveTrue,0);
     // - Run the Setup for the scheduler and all tasks
+
     g_MainScheduler.setup();
     // - Main Loop
     while(1)

@@ -26,7 +26,7 @@ class ACCELL : public Task
     protected:
         float m_fTaskTimems;
     private:
-        uint32_t m_axyzValues[3];
+        int32_t m_axyzValues[3];
         Mailbox * m_pMailbox;
 };
 
