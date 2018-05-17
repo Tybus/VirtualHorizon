@@ -7,10 +7,10 @@
 #ifndef ANGLE_HPP_
 #define ANGLE_HPP_
 #define __NOP __nop
-#include "msp.h"
+#include <ti/devices/msp432p4xx/inc/msp.h>
 #include "Task.hpp"
-#include "driverlib.h"
 #include "Mailbox.hpp"
+#include <math.h>
 
 
 class ANGLE : public Task
@@ -24,6 +24,9 @@ class ANGLE : public Task
         float m_fTaskTimems;
     private:
         uint32_t m_axyzValues[3];
+        int32_t m_i32LastElevationAngle;
+        int32_t m_i32LastRotationAngle;
+        Mailbox * m_pMailbox;
 };
 
 #endif /* LED_HPP_ */

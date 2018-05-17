@@ -91,6 +91,12 @@ uint8_t Scheduler::CalculateNextSchedule(void){
         m_lSchedule.push_back(&m_aTotalTasks[i]);
     }
     m_lSchedule.remove_if(IsInactiveTask);         //Remove the inactive ones
+    list<TaskInfo *>::iterator l_iTaskInfo = m_lSchedule.begin();
+    TaskInfo * l_pTask;
+    for(l_iTaskInfo ;l_iTaskInfo != m_lSchedule.end(); l_iTaskInfo++){
+        l_pTask =  (* l_iTaskInfo);
+        l_pTask->GetTickInterval();
+    }
     m_lSchedule.remove_if(TickIntervalNotZero);     //Remove the tasks if the interval is not zero.
     m_lSchedule.sort(SortScheduleByPriority);       //Sort them by priority.
     SortScheduleByTime();                           //Sort how many will be available in a tick.

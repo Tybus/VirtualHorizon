@@ -27,6 +27,7 @@ class ACCELL : public Task
         float m_fTaskTimems;
     private:
         uint32_t m_axyzValues[3];
+        Mailbox * m_pMailbox;
 };
 
 #endif /* LED_HPP_ */
