@@ -7,17 +7,20 @@
 
 #ifndef MAILBOX_HPP_
 #define MAILBOX_HPP_
-<<<<<<< HEAD
-#include "msp.h"
-#include <list>
-=======
+
 #include <ti/devices/msp432p4xx/inc/msp.h>
+#include <list>
 #include <vector>
->>>>>>> 3ae15eba579bb43d0cbf98e5b8a96c7fd98d30e1
 #define MAX_MESSAGE_QUEUE 50
 #define ACCELL_MB_ID 1
 #define ANGLE_MB_ID 2
+#define POSITION_MB_ID 3
+#define LINE_MB_ID 4
+#define ROLL_MB_ID 5
 #define ACCELL_ADC_RESULT_CODE 1
+#define ANGLE_ELEVATION_ANGLE_RESULT_CODE 1
+#define ANGLE_ROTATION_ANGLE_RESULT_CODE 2
+#define POSITION_ELEVATION 1
 
 struct st_Message
 {
