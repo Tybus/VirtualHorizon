@@ -8,7 +8,7 @@
 #ifndef LED_HPP_
 #define LED_HPP_
 #define __NOP __nop
-#include "msp.h"
+#include <ti/devices/msp432p4xx/inc/msp.h>
 #include "Task.hpp"
 
 
@@ -20,6 +20,7 @@ class LED : public Task
         virtual uint8_t run(void);
         virtual uint8_t setup(void);
     protected:
+        float m_fTaskTimems;
     private:
 };
 

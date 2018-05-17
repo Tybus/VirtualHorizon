@@ -1,13 +1,12 @@
-#include "msp.h"
+#include <ti/devices/msp432p4xx/inc/msp.h>
 #include "main.hpp"
 #include "Scheduler.hpp"
 #include "Task.hpp"
 #include "LED.hpp"
+#include <Timer32.h>
+#include "ACCELL.hpp"
+//#include "ACCELL.hpp"
 
-// ##########################
-// Global/Static declarations
-// ##########################
-uint8_t Task::m_u8NextTaskID = 0; // - Init task ID
 
 volatile static uint64_t g_SystemTicks = 0; // - The system counter.
 Mailbox* g_Mailbox = Mailbox::getMailbox();
@@ -16,16 +15,19 @@ Scheduler g_MainScheduler; // - Instantiate a Scheduler
 // #########################
 //          MAIN
 // #########################
-void main(void)
-{
+void main(void){
+
+
     // - Instantiate two new Tasks
-    LED BlueLED(BIT2);
-    LED GreenLED(BIT1);
+    //LED BlueLED(BIT2);
+    //LED GreenLED(BIT1);
+    ACCELL Accelerometer();
     // - Run the overall setup function for the system
-    Setup();
+    Setup(g_MainScheduler.getSchedulerTick());//Start with 1ms Tick
     // - Attach the Tasks to the Scheduler;
-    g_MainScheduler.attach(&BlueLED,TaskType_Periodic, TaskActiveTrue,500);
-    g_MainScheduler.attach(&GreenLED, TaskType_Periodic,TaskActiveFalse,600);
+    //g_MainScheduler.attach(&BlueLED,TaskType_Periodic, TaskActiveTrue,500);
+    //g_MainScheduler.attach(&GreenLED, TaskType_Periodic,TaskActiveTrue, 600);
+    g_MainScheduler.attach(&Accelerometer, TaskType_Periodic, TaskActiveTrue,200);
     // - Run the Setup for the scheduler and all tasks
     g_MainScheduler.setup();
     // - Main Loop
@@ -46,8 +48,9 @@ void main(void)
 // @input - none
 // @output - none
 // **********************************
-void Setup(void)
-{
+void Setup(float i_fTickms){
+    uint32_t l_u32Prescale;
+    uint32_t l_u32CountValue;
 	// ****************************
 	//         DEVICE CONFIG
 	// ****************************
@@ -68,8 +71,13 @@ void Setup(void)
 	// - Enable the interrupt in the NVIC
 	// - Start the timer in UP mode.
 	// - Re-enable interrupts
-	TIMER32_1->LOAD = TIMER32_COUNT; //~1ms ---> a 3Mhz
-	TIMER32_1->CONTROL = TIMER32_CONTROL_SIZE | TIMER32_CONTROL_PRESCALE_0 | TIMER32_CONTROL_MODE | TIMER32_CONTROL_IE | TIMER32_CONTROL_ENABLE;
+
+	l_u32Prescale = Timer32::calculatePrescale(i_fTickms);
+    l_u32CountValue = Timer32::calculateValue(i_fTickms, l_u32Prescale);
+    TIMER32_1->LOAD = l_u32CountValue;
+    TIMER32_1->CONTROL = TIMER32_CONTROL_ENABLE | TIMER32_CONTROL_IE | l_u32Prescale |
+            TIMER32_CONTROL_MODE | TIMER32_CONTROL_SIZE;
+
 	NVIC_SetPriority(T32_INT1_IRQn,1);
 	NVIC_EnableIRQ(T32_INT1_IRQn);
 	__enable_irq();

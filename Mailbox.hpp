@@ -7,8 +7,13 @@
 
 #ifndef MAILBOX_HPP_
 #define MAILBOX_HPP_
+<<<<<<< HEAD
 #include "msp.h"
 #include <list>
+=======
+#include <ti/devices/msp432p4xx/inc/msp.h>
+#include <vector>
+>>>>>>> 3ae15eba579bb43d0cbf98e5b8a96c7fd98d30e1
 #define MAX_MESSAGE_QUEUE 50
 #define ACCELL_MB_ID 1
 #define ANGLE_MB_ID 2
@@ -21,7 +26,7 @@ struct st_Message
     uint8_t  u8SourceID;      // - Source Task ID
     uint8_t  u8MessageCode;   // - Message code, interpreted by Destination
     uint32_t u32MessageData;  // - Message data, interpreted by Destination
-    uint8_t * pPayload;       // - Message Payload, interpreted by Destination
+    uint32_t * pPayload;       // - Message Payload, interpreted by Destination
 };
 
 class Mailbox

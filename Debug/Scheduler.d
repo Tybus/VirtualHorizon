@@ -2,15 +2,15 @@
 
 Scheduler.obj: ../Scheduler.cpp
 Scheduler.obj: ../Scheduler.hpp
-Scheduler.obj: /home/david/ti/ccsv7/ccs_base/arm/include/msp.h
-Scheduler.obj: /home/david/ti/ccsv7/ccs_base/arm/include/msp432p401r.h
+Scheduler.obj: /home/david/ti/simplelink_msp432p4_sdk_2_10_00_14/source/ti/devices/msp432p4xx/inc/msp.h
+Scheduler.obj: /home/david/ti/simplelink_msp432p4_sdk_2_10_00_14/source/ti/devices/msp432p4xx/inc/msp432p401r.h
 Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stdint.h
-Scheduler.obj: /home/david/ti/ccsv7/ccs_base/arm/include/msp_compatibility.h
-Scheduler.obj: /home/david/ti/ccsv7/ccs_base/arm/include/CMSIS/cmsis_ccs.h
-Scheduler.obj: /home/david/ti/ccsv7/ccs_base/arm/include/msp432p401r_classic.h
-Scheduler.obj: /home/david/ti/ccsv7/ccs_base/arm/include/CMSIS/core_cm4.h
-Scheduler.obj: /home/david/ti/ccsv7/ccs_base/arm/include/CMSIS/cmsis_compiler.h
-Scheduler.obj: /home/david/ti/ccsv7/ccs_base/arm/include/system_msp432p401r.h
+Scheduler.obj: /home/david/ti/simplelink_msp432p4_sdk_2_10_00_14/source/ti/devices/msp432p4xx/inc/msp_compatibility.h
+Scheduler.obj: /home/david/ti/simplelink_msp432p4_sdk_2_10_00_14/source/ti/devices/msp432p4xx/inc/msp432p401r_classic.h
+Scheduler.obj: /home/david/ti/simplelink_msp432p4_sdk_2_10_00_14/source/third_party/CMSIS/Include/core_cm4.h
+Scheduler.obj: /home/david/ti/simplelink_msp432p4_sdk_2_10_00_14/source/third_party/CMSIS/Include/cmsis_compiler.h
+Scheduler.obj: /home/david/ti/simplelink_msp432p4_sdk_2_10_00_14/source/third_party/CMSIS/Include/cmsis_ccs.h
+Scheduler.obj: /home/david/ti/simplelink_msp432p4_sdk_2_10_00_14/source/ti/devices/msp432p4xx/inc/system_msp432p401r.h
 Scheduler.obj: ../Task.hpp
 Scheduler.obj: ../Mailbox.hpp
 Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/vector
@@ -68,18 +68,34 @@ Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include
 Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__epilog.h
 Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__config_compat_post.h
 Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stdlib.h
+Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/list
+Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__prolog.h
+Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__cprolog.h
+Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__list.h
+Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__list.c
+Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__list.h
+Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__carray.h
+Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__relops_cont.h
+Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__epilog.h
+Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__config_compat_post.h
+Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/cstddef
+Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__prolog.h
+Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__cprolog.h
+Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__epilog.h
+Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__config_compat_post.h
+Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stdio.h
 
 ../Scheduler.cpp: 
 ../Scheduler.hpp: 
-/home/david/ti/ccsv7/ccs_base/arm/include/msp.h: 
-/home/david/ti/ccsv7/ccs_base/arm/include/msp432p401r.h: 
+/home/david/ti/simplelink_msp432p4_sdk_2_10_00_14/source/ti/devices/msp432p4xx/inc/msp.h: 
+/home/david/ti/simplelink_msp432p4_sdk_2_10_00_14/source/ti/devices/msp432p4xx/inc/msp432p401r.h: 
 /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stdint.h: 
-/home/david/ti/ccsv7/ccs_base/arm/include/msp_compatibility.h: 
-/home/david/ti/ccsv7/ccs_base/arm/include/CMSIS/cmsis_ccs.h: 
-/home/david/ti/ccsv7/ccs_base/arm/include/msp432p401r_classic.h: 
-/home/david/ti/ccsv7/ccs_base/arm/include/CMSIS/core_cm4.h: 
-/home/david/ti/ccsv7/ccs_base/arm/include/CMSIS/cmsis_compiler.h: 
-/home/david/ti/ccsv7/ccs_base/arm/include/system_msp432p401r.h: 
+/home/david/ti/simplelink_msp432p4_sdk_2_10_00_14/source/ti/devices/msp432p4xx/inc/msp_compatibility.h: 
+/home/david/ti/simplelink_msp432p4_sdk_2_10_00_14/source/ti/devices/msp432p4xx/inc/msp432p401r_classic.h: 
+/home/david/ti/simplelink_msp432p4_sdk_2_10_00_14/source/third_party/CMSIS/Include/core_cm4.h: 
+/home/david/ti/simplelink_msp432p4_sdk_2_10_00_14/source/third_party/CMSIS/Include/cmsis_compiler.h: 
+/home/david/ti/simplelink_msp432p4_sdk_2_10_00_14/source/third_party/CMSIS/Include/cmsis_ccs.h: 
+/home/david/ti/simplelink_msp432p4_sdk_2_10_00_14/source/ti/devices/msp432p4xx/inc/system_msp432p401r.h: 
 ../Task.hpp: 
 ../Mailbox.hpp: 
 /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/vector: 
@@ -137,3 +153,19 @@ Scheduler.obj: /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include
 /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__epilog.h: 
 /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__config_compat_post.h: 
 /home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stdlib.h: 
+/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/list: 
+/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__prolog.h: 
+/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__cprolog.h: 
+/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__list.h: 
+/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__list.c: 
+/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__list.h: 
+/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__carray.h: 
+/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__relops_cont.h: 
+/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__epilog.h: 
+/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__config_compat_post.h: 
+/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/cstddef: 
+/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__prolog.h: 
+/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__cprolog.h: 
+/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__epilog.h: 
+/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/s__config_compat_post.h: 
+/home/david/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include/stdio.h: 

@@ -1,5 +1,6 @@
 #include "Task.hpp"
 
+uint8_t Task::m_u8NextTaskID = 0; // - Init task ID
 Task::Task()
 {
     m_u8TaskID = m_u8NextTaskID;
