@@ -55,8 +55,8 @@ extern "C"
     }
 
     void Mailbox::ValidBitCleaner(){
-        for(l_iPosition = 0; i<= sizeof(m_stMessageQueue); i++){
-            m_stMessageQueue[i].bMessageValid = false;
+        for(uint8_t l_iPosition = 0; l_iPosition<= sizeof(m_stMessageQueue); l_iPosition++){
+            m_stMessageQueue[l_iPosition].bMessageValid = false;
         }
     }
 }
