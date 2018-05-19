@@ -35,8 +35,8 @@ void main(void){
     Position.setup();
     while(1){
         //Angle.run();
-        //Accelerometer.run();
-        Position.run();
+        Accelerometer.run();
+        //Position.run();
     }
     //g_MainScheduler.attach(&BlueLED,TaskType_Periodic, TaskActiveTrue,500);
     g_MainScheduler.attach(&GreenLED, TaskType_Periodic,TaskActiveTrue, 600);

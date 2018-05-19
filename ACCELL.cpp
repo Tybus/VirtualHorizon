@@ -11,16 +11,16 @@ uint8_t ACCELL::run(){
     m_axyzValues[0] = (int16_t) ADC14_getResult(ADC_MEM0); //better get this for sure.
     m_axyzValues[1] = (int16_t) ADC14_getResult(ADC_MEM1);
     m_axyzValues[2] = (int16_t) ADC14_getResult(ADC_MEM2);
-    l_MreadValues.bMessageValid = true;
-    l_MreadValues.u8DestinationID = ANGLE_MB_ID;
-    l_MreadValues.u8SourceID = ACCELL_MB_ID;
-    l_MreadValues.u8MessageCode = ACCELL_ADC_RESULT_CODE;
-    l_MreadValues.u32MessageData = 3;//6 8 bit values to read.
-    l_MreadValues.pPayload = (uint32_t * ) this->m_axyzValues;
+        l_MreadValues.bMessageValid = true;
+        l_MreadValues.u8DestinationID = ANGLE_MB_ID;
+        l_MreadValues.u8SourceID = ACCELL_MB_ID;
+        l_MreadValues.u8MessageCode = ACCELL_ADC_RESULT_CODE;
+        l_MreadValues.u32MessageData = 3;//6 8 bit values to read.
+        l_MreadValues.pPayload = (uint32_t * ) this->m_axyzValues;
 
-    m_pMailbox->sendMessage(l_MreadValues);
+        m_pMailbox->sendMessage(l_MreadValues);
 
-    //l_MreadValues = m_pMailbox->getMessage(ANGLE_MB_ID); mailbox is not working
+        l_MreadValues = m_pMailbox->getMessage(ANGLE_MB_ID); //mailbox is not working
 
     return NO_ERR;
 
