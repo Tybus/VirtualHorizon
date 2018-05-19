@@ -53,6 +53,12 @@ extern "C"
         }
         return(false);
     }
+
+    void Mailbox::ValidBitCleaner(){
+        for(l_iPosition = 0; i<= sizeof(m_stMessageQueue); i++){
+            m_stMessageQueue[i].bMessageValid = false;
+        }
+    }
 }
 
 

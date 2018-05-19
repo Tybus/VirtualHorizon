@@ -24,7 +24,7 @@
 
 struct st_Message
 {
-    bool     bMessageValid = 0;   // - True when message is valid
+    bool     bMessageValid;   // - True when message is valid
     uint8_t  u8DestinationID; // - Destination Task ID
     uint8_t  u8SourceID;      // - Source Task ID
     uint8_t  u8MessageCode;   // - Message code, interpreted by Destination
@@ -38,6 +38,7 @@ public:
     static Mailbox* getMailbox();                       //Returns a pointer to this Mailbox
     bool sendMessage(st_Message i_stMessage);           //Returns 1 if error.
     st_Message getMessage(uint8_t i_u8MailboxID);       //Returns a st_Message , if bMessageValid = 0, Its not a valid message
+    void ValidBitCleaner();
 
 private:
     Mailbox(){};
