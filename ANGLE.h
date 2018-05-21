@@ -12,20 +12,25 @@
 #include "Mailbox.hpp"
 #include <math.h>
 
-
+//! ANGLE class inherits from task
 class ANGLE : public Task
 {
     public:
+        //! CTR
         ANGLE(void);
-        uint16_t m_u16BITN;
+        //! Run the task
         virtual uint8_t run(void);
+        //! Setups the task
         virtual uint8_t setup(void);
     protected:
+        //! Time of the task
         float m_fTaskTimems;
     private:
-        uint32_t m_axyzValues[3];
+        //! Read angle of elevation
         int32_t m_i32LastElevationAngle;
+        //! Read angle of rotation
         int32_t m_i32LastRotationAngle;
+        //! Pointer to the mailbox
         Mailbox * m_pMailbox;
 };
 

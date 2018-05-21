@@ -15,18 +15,23 @@
 #include "LcdDriver/Crystalfontz128x128_ST7735.h"
 #include <stdio.h>
 #include "Mailbox.hpp"
-
+//! ACCELL Class, INherits form Task
 class ACCELL : public Task
 {
     public:
+        //! STD CTR
         ACCELL(void);
-        uint16_t m_u16BITN;
+        //! Run the task
         virtual uint8_t run(void);
+        //! Setup The task
         virtual uint8_t setup(void);
     protected:
+        //!Time that the task will spend
         float m_fTaskTimems;
     private:
+        //! Read Values of the Accelerometer for the xyz values
         int32_t m_axyzValues[3];
+        //! Pointer to the mailbox
         Mailbox * m_pMailbox;
 };
 

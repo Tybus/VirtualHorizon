@@ -12,10 +12,11 @@ Scheduler::Scheduler(){
 
 // - The attach function, inserts the task into the schedule slots.
 uint8_t Scheduler::attach(Task * i_pTask, TaskType i_enTaskType,
-                          TaskActive i_enTaskActive, uint64_t i_u64TickInterval){
+                          TaskActive i_enTaskActive, uint64_t i_u64TickInterval,
+                          uint8_t i_u8TaskPriority){
     uint8_t l_ErrorCode = NO_ERR;
     if(!m_bTotalTasksFull){
-        TaskInfo l_TaskInfo = TaskInfo(i_pTask, i_enTaskType, i_enTaskActive, i_u64TickInterval);
+        TaskInfo l_TaskInfo = TaskInfo(i_pTask, i_enTaskType, i_enTaskActive, i_u64TickInterval, i_u8TaskPriority);
         m_aTotalTasks[m_u8NextSlot] = l_TaskInfo;
         m_u8NextSlot++;
         if(m_u8NextSlot == 255){

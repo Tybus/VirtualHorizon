@@ -31,6 +31,7 @@ extern "C"
                 l_u8Searcher++;
             }
         }
+        l_stMessage.bMessageValid = false;
         l_stMessage.u32MessageData = 0;                                               //0 means old message
         return(l_stMessage);
     }
@@ -55,7 +56,7 @@ extern "C"
     }
 
     void Mailbox::ValidBitCleaner(){
-        for(uint8_t l_iPosition = 0; l_iPosition<= sizeof(m_stMessageQueue); l_iPosition++){
+        for(uint32_t l_iPosition = 0; l_iPosition < MAX_MESSAGE_QUEUE; l_iPosition++){
             m_stMessageQueue[l_iPosition].bMessageValid = false;
         }
     }

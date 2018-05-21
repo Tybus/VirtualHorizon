@@ -12,6 +12,7 @@
 #include <list>
 #include <vector>
 #define MAX_MESSAGE_QUEUE 50
+#define SCHEDULER_MB_ID 0
 #define ACCELL_MB_ID 1
 #define ANGLE_MB_ID 2
 #define POSITION_MB_ID 3
@@ -20,7 +21,7 @@
 #define ACCELL_ADC_RESULT_CODE 1
 #define ANGLE_ELEVATION_ANGLE_RESULT_CODE 1
 #define ANGLE_ROTATION_ANGLE_RESULT_CODE 2
-#define POSITION_ELEVATION 1
+#define POSITION_ELEVATION_RESULT_CODE 3
 
 struct st_Message
 {

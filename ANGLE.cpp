@@ -17,21 +17,13 @@ ANGLE::ANGLE(){
 uint8_t ANGLE::run(){
     st_Message l_MoutMessage;
     st_Message l_MrMessage = m_pMailbox->getMessage(ANGLE_MB_ID);
-    // DELETE THIS, Mailbox is not yet working.
-    int32_t xyzvalues[3] = {9104,-7632 ,-5568}; // some accelerometer values.
-    l_MrMessage.bMessageValid =1; //Delete this, only because mailbox is not working.
-    l_MrMessage.pPayload = (uint32_t * ) xyzvalues;
-    l_MrMessage.u32MessageData = 3;
-    l_MrMessage.u8DestinationID = ANGLE_MB_ID;
-    l_MrMessage.u8MessageCode = ACCELL_ADC_RESULT_CODE;
-    l_MrMessage.u8SourceID = ACCELL_MB_ID;
-    //END OF EDITED STUFF.
+
     int32_t l_i32xCoordinate, l_i32yCoordinate, l_i32zCoordinate;
     int32_t l_i32ElevationAngle = m_i32LastElevationAngle;
     int32_t l_i32RotationAngle = m_i32LastRotationAngle;
     while(l_MrMessage.bMessageValid){
         if(l_MrMessage.u8SourceID == ACCELL_MB_ID
-                && l_MrMessage.u8MessageCode == ACCELL_ADC_RESULT_CODE){
+                && l_MrMessage.u8MessageCode == ACCELL_ADC_RESULT_CODE){ //Calculates the angles
             l_i32xCoordinate = (int32_t) l_MrMessage.pPayload[0];
             l_i32yCoordinate = (int32_t) l_MrMessage.pPayload[1];
             l_i32zCoordinate = (int32_t) l_MrMessage.pPayload[2];
@@ -58,7 +50,7 @@ uint8_t ANGLE::run(){
     std::memcpy(&l_MoutMessage.u32MessageData , &l_i32RotationAngle, 4); //copy the contents of the of the
                                                               //input files. Muting int to uint
     l_MoutMessage.bMessageValid = true;
-    l_MoutMessage.u8DestinationID = ROLL_MB_ID;
+    l_MoutMessage.u8DestinationID = LINE_MB_ID;
     l_MoutMessage.u8SourceID = ANGLE_MB_ID;
     l_MoutMessage.u8MessageCode = ANGLE_ROTATION_ANGLE_RESULT_CODE;
     l_MoutMessage.pPayload = NULL;
@@ -72,6 +64,6 @@ uint8_t ANGLE::run(){
 
 }
 
-uint8_t ANGLE::setup(){
+uint8_t ANGLE::setup(){ //No hardware config to be made
     return NO_ERR;
 }
