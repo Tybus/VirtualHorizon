@@ -41,7 +41,7 @@ extern "C"
         uint8_t l_u8Positioner = 0; //Used to place the messages to N destination at each N+l_u8Positioner*TASKS_QUANTITY gap into  m_stMessageQueue
         while((i_stMessage.u8DestinationID + TASKS_QUANTITY*l_u8Positioner) <= MAX_MESSAGE_QUEUE){
             int k = i_stMessage.u8DestinationID + TASKS_QUANTITY*l_u8Positioner;
-            printf("Position is: %d\n", k);
+            //printf("Position is: %d\n", k);
             if(m_stMessageQueue[i_stMessage.u8DestinationID + TASKS_QUANTITY*l_u8Positioner].bMessageValid == false)   //If there isn't any message valid for the destination task
             {
                 m_stMessageQueue[i_stMessage.u8DestinationID + TASKS_QUANTITY*l_u8Positioner] = i_stMessage;

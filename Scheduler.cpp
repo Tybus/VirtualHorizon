@@ -32,7 +32,6 @@ uint8_t Scheduler::run(void){
     list<TaskInfo *>::iterator l_iTaskInfo;
     TaskInfo * l_pTaskInfo;
     uint8_t l_u8ReturnCode = NO_ERR;
-
     for(l_iTaskInfo = m_lSchedule.begin(); l_iTaskInfo != m_lSchedule.end() ; l_iTaskInfo++ ){
         l_pTaskInfo = (*l_iTaskInfo);
         l_pTaskInfo->run();
@@ -84,6 +83,7 @@ void Scheduler::CheckMailbox(void){
     }
 }
 uint8_t Scheduler::CalculateNextSchedule(void){
+    m_lSchedule.clear();
     //Start by looking if you have any message in your mailbox.
     CheckMailbox();
     for(uint8_t i = 0; i< NUMBER_OF_SLOTS; i++){
