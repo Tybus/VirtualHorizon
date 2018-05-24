@@ -8,7 +8,8 @@
 #include "MID_LINE.hpp"
 
     /* Graphic library context */
-    Graphics_Context g_sContext;
+    Graphics_Context g_sContextBlue;
+    Graphics_Context g_sContextGreen;
 
 MIDLINE::MIDLINE(){
     m_pMailbox = Mailbox::getMailbox();
@@ -16,6 +17,7 @@ MIDLINE::MIDLINE(){
 }
 
 uint8_t MIDLINE::run(){
+    /*
     Graphics_clearDisplay(&g_sContext);
     st_Message l_MreadMessages;
     st_Message l_MreadMessages2;
@@ -47,7 +49,6 @@ uint8_t MIDLINE::run(){
         //printf("Angulo en segundo mensaje\n");
         //printf("angle is %d \n", l_iAngle);
     }
-    printf("Position is %d, and angle is %d \n", l_iPosition, l_iAngle);
 
     //Graphics_clearDisplay(&g_sContext);
 
@@ -107,31 +108,38 @@ uint8_t MIDLINE::run(){
                                             OPAQUE_TEXT);
     }
 
-
-    uint8_t l_iShorterY = 0;
-    uint8_t l_iBiggerY = 0;
-    if(m_ui16Y1 >= m_ui16Y0){
-        l_iShorterY = m_ui16Y0;
-        l_iBiggerY = m_ui16Y1;
-        //for(uint8_t l_iIterator = l_iBiggerY; l_iIterator >= l_iShorterY; l_iIterator --){
-          //  Graphics_drawLine(&g_sContext, 0, l_iIterator, 127, l_iShorterY);
-        //}
+*/
+    uint8_t l_u8LinePoint = 0;
+    st_Message l_MReadMesage = m_pMailbox->getMessage(LINE_MB_ID);
+    while(l_MReadMesage.bMessageValid){
+        if( l_MReadMesage.u8SourceID == POSITION_MB_ID){
+            l_u8LinePoint = l_MReadMesage.u32MessageData;
+            break;
+        }
+        else
+            l_MReadMesage = m_pMailbox->getMessage(LINE_MB_ID);
     }
-    if(m_ui16Y0 > m_ui16Y1){
-        l_iShorterY = m_ui16Y1;
-        l_iBiggerY = m_ui16Y0;
-        //for(uint8_t l_iIterator = l_iBiggerY; l_iIterator >= l_iShorterY; l_iIterator --){
-        //    Graphics_drawLine(&g_sContext, 0, l_iShorterY, 127, l_iIterator);
-        //}
-    }
-    Graphics_Rectangle myRectangle1 = {0, l_iBiggerY, 128, 128};
-    Graphics_fillRectangle(&g_sContext, &myRectangle1);
+    Graphics_Rectangle BlueRectangle = {0,0, 127, l_u8LinePoint};
+    Graphics_Rectangle GreenRectangle = {0,l_u8LinePoint, 127, 127};
+    Graphics_fillRectangle(&g_sContextBlue, &BlueRectangle);
+    Graphics_fillRectangle(&g_sContextGreen, &GreenRectangle);
     return 0;
 
 }
 
 uint8_t MIDLINE::setup(){
+    //MAP_PCM_setCoreVoltageLevel(PCM_VCORE1);
 
+    /* Set 2 flash wait states for Flash bank 0 and 1*/
+    MAP_FlashCtl_setWaitState(FLASH_BANK0, 2);
+    MAP_FlashCtl_setWaitState(FLASH_BANK1, 2);
+
+    /* Initializes Clock System */
+    MAP_CS_setDCOCenteredFrequency(CS_DCO_FREQUENCY_48);
+    MAP_CS_initClockSignal(CS_MCLK, CS_DCOCLK_SELECT, CS_CLOCK_DIVIDER_1);
+    MAP_CS_initClockSignal(CS_HSMCLK, CS_DCOCLK_SELECT, CS_CLOCK_DIVIDER_1);
+    MAP_CS_initClockSignal(CS_SMCLK, CS_DCOCLK_SELECT, CS_CLOCK_DIVIDER_1);
+    MAP_CS_initClockSignal(CS_ACLK, CS_REFOCLK_SELECT, CS_CLOCK_DIVIDER_1);
     /* Initializes display */
     Crystalfontz128x128_Init();
 
@@ -139,9 +147,13 @@ uint8_t MIDLINE::setup(){
     Crystalfontz128x128_SetOrientation(LCD_ORIENTATION_UP);
 
     /* Initializes graphics context */
-    Graphics_initContext(&g_sContext, &g_sCrystalfontz128x128, &g_sCrystalfontz128x128_funcs);
-    Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_GREEN);
-    Graphics_setBackgroundColor(&g_sContext, GRAPHICS_COLOR_BLUE);
+    Graphics_initContext(&g_sContextGreen, &g_sCrystalfontz128x128, &g_sCrystalfontz128x128_funcs);
+    Graphics_setForegroundColor(&g_sContextGreen, GRAPHICS_COLOR_GREEN);
+    Graphics_setBackgroundColor(&g_sContextGreen, GRAPHICS_COLOR_BLUE);
+
+    Graphics_initContext(&g_sContextBlue, &g_sCrystalfontz128x128, &g_sCrystalfontz128x128_funcs);
+    Graphics_setBackgroundColor(&g_sContextBlue, GRAPHICS_COLOR_GREEN);
+    Graphics_setForegroundColor(&g_sContextBlue, GRAPHICS_COLOR_BLUE);
     return 0;
     }
 

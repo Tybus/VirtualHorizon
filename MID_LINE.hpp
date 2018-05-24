@@ -13,7 +13,6 @@
 #include "Mailbox.hpp"
 #include <ti/grlib/grlib.h>
 #include "LcdDriver/Crystalfontz128x128_ST7735.hpp"
-#include <stdio.h>
 #include <cmath>
 
 //! MIDLINE class inherits from task

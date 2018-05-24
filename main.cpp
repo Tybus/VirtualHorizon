@@ -18,7 +18,7 @@ Scheduler g_MainScheduler; // - Instantiate a Scheduler
 // #########################
 //          MAIN
 // #########################
-void main(void){
+ void main(void){
     g_Mailbox->ValidBitCleaner(); //Cleans the Mailbox.
     Setup(g_MainScheduler.getSchedulerTick());
     // - Instantiate two new Tasks
@@ -27,6 +27,17 @@ void main(void){
     POSITION Position = POSITION();
     MIDLINE ML = MIDLINE();
     //Attach all the tasks.
+
+    Angle.setup();
+    Position.setup();
+    ML.setup();
+    Accelerometer.setup();
+    while(1){
+        Accelerometer.run();
+        Angle.run();
+        Position.run();
+        ML.run();
+    }
     g_MainScheduler.attach(&ML, TaskType_Periodic, TaskActiveTrue,50, 7);
     g_MainScheduler.attach(&Accelerometer, TaskType_Always, TaskActiveTrue,0,4);
     g_MainScheduler.attach(&Angle, TaskType_Always, TaskActiveTrue,0 , 5);
